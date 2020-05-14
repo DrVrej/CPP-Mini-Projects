@@ -3,8 +3,7 @@
 
 int main(){
 	int input{};
-	//std::cin >> input;
-	std::cout << "blig";
-	std::cout << doubleNumber(5) << '\n';
+	std::cin >> input;
+	std::cout << doubleNumber(input) << '\n';
 	return 0;
 }
