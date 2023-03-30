@@ -1,6 +1,6 @@
 /*
     Created by DrVrej.
-    Start date: May 10, 2020.
+    Initial creation date: May 10, 2020.
     Idea: http://www.cppforschool.com/project/tic-tac-toe-project.html
 
 	Features:
@@ -11,23 +11,24 @@
 
 	Compiling:
 	1. windres icon.rc -O coff -o icon.res
+		- To create the icon
 	2. g++ -o TicTacToe TicTacToe.cpp icon.res -static
 */
 #include <iostream>
 
-#define COLOR_DEFAULT "\033[0m" /* Default */
-#define COLOR_RED "\033[31m" /* Red */
-#define COLOR_GREEN "\033[32m" /* Green */
-#define COLOR_YELLOW "\033[33m" /* Yellow */
-#define COLOR_CYAN "\033[36m" /* Cyan */
-#define COLOR_BOLDRED "\033[1m\033[31m" /* Bold Red */
-#define COLOR_BOLDWHITE "\033[1m\033[37m" /* Bold White */
+#define COLOR_DEFAULT		"\033[0m"
+#define COLOR_RED			"\033[31m"
+#define COLOR_GREEN			"\033[32m"
+#define COLOR_YELLOW		"\033[33m"
+#define COLOR_CYAN			"\033[36m"
+#define COLOR_RED_BOLD		"\033[1m\033[31m"
+#define COLOR_WHITE_BOLD	"\033[1m\033[37m"
 
 char boxes[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
 // Draws the board
 void drawBoard(){
-	std::cout << COLOR_BOLDWHITE << "\n     " << boxes[0] << " | " << boxes[1] << " | " << boxes[2] << '\n';
+	std::cout << COLOR_WHITE_BOLD << "\n     " << boxes[0] << " | " << boxes[1] << " | " << boxes[2] << '\n';
     std::cout << "     " << "---------\n"; // Seperator
     std::cout << "     " << boxes[3] << " | " << boxes[4] << " | " << boxes[5] << '\n';
     std::cout << "     " << "---------\n"; // Seperator
@@ -58,12 +59,12 @@ int main(){
 			std::cin >> entered_num;
 			// Redo the input code if the given input is incorrect (Non-number or not 1 to 9)
 			if((!entered_num) || (entered_num < 1) || (entered_num > 9)){
-				std::cout << COLOR_BOLDRED << "Incorrect input! Please input a number from 1 to 9\n" << COLOR_DEFAULT;
+				std::cout << COLOR_RED_BOLD << "Incorrect input! Please input a number from 1 to 9\n" << COLOR_DEFAULT;
 				std::cin.clear(); // Clear all input flags (ex: errors)
 				std::cin.ignore(); // Ignore all the previous objects in the buffer
 				goto redo_input;
 			}else if(boxes[entered_num - 1] != ('0' + entered_num)){
-				std::cout << COLOR_BOLDRED << "That spot is already marked! Try again!\n" << COLOR_DEFAULT;
+				std::cout << COLOR_RED_BOLD << "That spot is already marked! Try again!\n" << COLOR_DEFAULT;
 				std::cin.clear(); // Clear all input flags (ex: errors)
 				std::cin.ignore(); // Ignore all the previous objects in the buffer
 				goto redo_input;
